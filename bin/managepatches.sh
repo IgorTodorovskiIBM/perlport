@@ -45,6 +45,10 @@ for patch in $patches; do
 		cp "${o}" "${f}"
 	else
 		# Original file does not exist yet. Create original file
+		if ! [ -f "${f}" ]; then
+			# This patch is meant to create a brand new file
+			touch "${f}"
+		fi
 		cp "${f}" "${o}"
 	fi
 
